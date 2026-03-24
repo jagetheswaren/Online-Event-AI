@@ -31,7 +31,18 @@ jobs:
         run: npm install
 
       - name: Build web
+        env:
+          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
         run: npx expo export --platform web --output-dir web-build
+
+      - name: Add GitHub Pages SPA fallback
+        run: |
+          touch web-build/.nojekyll
+          cp web-build/index.html web-build/404.html
+
+      - name: Add custom domain (optional)
+        if: ${{ vars.CUSTOM_DOMAIN != '' }}
+        run: echo "${{ vars.CUSTOM_DOMAIN }}" > web-build/CNAME
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
