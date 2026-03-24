@@ -1,0 +1,5 @@
+$ bunx rork start -p lz8q7gdk7i8t2azfe95nl --web --tunnel
+Input is required, but 'npx expo' is in non-interactive mode.
+Required input:
+> Use port 8082 instead?
+error: script "start-web" exited with code 1

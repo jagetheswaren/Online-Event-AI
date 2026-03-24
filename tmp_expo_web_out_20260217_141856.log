@@ -1,0 +1,8 @@
+Starting project at C:\Users\jaget\Desktop\Online Event AI
+Metro is running in CI mode, reloads are disabled. Remove CI=true to enable watch mode.
+Starting Metro Bundler
+Waiting on http://localhost:8099
+Logs for your project will appear below.
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 92.2% (2533/2659)
+Web Bundled 3210ms node_modules\expo-router\entry.js (2884 modules)
+ LOG  [web] Logs will appear in the browser console

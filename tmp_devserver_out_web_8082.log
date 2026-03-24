@@ -1,0 +1,72 @@
+Starting project at C:\Users\jaget\Desktop\Online Event AI
+Starting Metro Bundler
+Tunnel connected.
+Tunnel ready.
+Waiting on http://localhost:8082
+Logs for your project will appear below.
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 65.1% ( 649/2361)
+Web Bundling failed 3166ms node_modules\expo-router\entry.js (2909 modules)
+ ERROR  SyntaxError: C:\Users\jaget\Desktop\Online Event AI\app\home.tsx: Unexpected token (248:14)
+
+  246 |                   category={category}
+  247 |                   onPress={() => router.push(`/events?category=${category.id}`)}
+> 248 |               ))}
+      |               ^
+  249 |             </ScrollView>
+  250 |           </View>
+  251 |
+    at constructor (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:365:19)
+    at TypeScriptParserMixin.raise (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:6599:19)
+    at TypeScriptParserMixin.unexpected (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:6619:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4569:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4576:23)
+    at TypeScriptParserMixin.jsxParseAttribute (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4652:22)
+    at TypeScriptParserMixin.jsxParseOpeningElementAfterName (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4667:28)
+    at TypeScriptParserMixin.jsxParseOpeningElementAfterName (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10043:18)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4662:17)
+    at TypeScriptParserMixin.jsxParseElementAt (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4686:33)
+    at TypeScriptParserMixin.jsxParseElement (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4749:17)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4759:19)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10831:21)
+    at C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:9775:39
+    at TypeScriptParserMixin.tryParse (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:6907:20)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:9775:18)
+    at C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10800:39
+    at TypeScriptParserMixin.allowInAnd (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:12426:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10800:17)
+    at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:12493:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11675:28)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11331:23)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4764:20)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10831:21)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:9786:20)
+    at TypeScriptParserMixin.parseFunctionBody (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:12093:24)
+    at TypeScriptParserMixin.parseArrowExpression (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:12075:10)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11687:12)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11331:23)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:4764:20)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\jaget\Desktop\Online Event AI\node_modules\@babel\parser\lib\index.js:10904:23)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 3191ms node_modules\expo-router\entry.js (2925 modules)
+Web Bundled 160ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 184ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
