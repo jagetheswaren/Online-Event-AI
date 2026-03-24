@@ -37,7 +37,14 @@ export default function TopMenuBar({ transparent = false, showMenu = true }: Top
         <Text style={styles.logo}>EventAI</Text>
       </View>
       
-      <View style={styles.rightSection} />
+      <View style={styles.rightSection}>
+        <TouchableOpacity
+          style={styles.aboutButton}
+          onPress={() => router.push('/about')}
+        >
+          <Text style={styles.aboutText}>About</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -83,6 +90,18 @@ const styles = StyleSheet.create({
   adminText: {
     fontSize: 14,
     color: theme.colors.accent,
+    fontFamily: theme.fonts.semibold,
+  },
+  aboutButton: {
+    borderWidth: 1,
+    borderColor: theme.colors.lineSoft,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+  },
+  aboutText: {
+    fontSize: 14,
+    color: theme.colors.text,
     fontFamily: theme.fonts.semibold,
   },
   logo: {
