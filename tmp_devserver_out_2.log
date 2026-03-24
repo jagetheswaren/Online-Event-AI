@@ -1,8 +1,0 @@
-$ DEBUG=expo* bunx rork start -p lz8q7gdk7i8t2azfe95nl --web --tunnel
-Starting project at C:\Users\jaget\Desktop\Online Event AI
-› Port 8081 is being used by another process
-Input is required, but 'npx expo' is in non-interactive mode.
-Required input:
-> Use port 8082 instead?
-› Skipping dev server
-error: script "start-web-dev" exited with code 1

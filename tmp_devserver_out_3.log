@@ -1,5 +1,0 @@
-$ DEBUG=expo* bunx rork start -p lz8q7gdk7i8t2azfe95nl --web --tunnel
-Starting project at C:\Users\jaget\Desktop\Online Event AI
-Starting Metro Bundler
-CommandError: ngrok tunnel took too long to connect.
-error: script "start-web-dev" exited with code 1

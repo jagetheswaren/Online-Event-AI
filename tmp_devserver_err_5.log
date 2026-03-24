@@ -1,4 +1,0 @@
-$ bunx rork start -p lz8q7gdk7i8t2azfe95nl --web --tunnel
-CommandError: TypeError: Cannot read properties of undefined (reading 'body')
-Check the Ngrok status page for outages: https://status.ngrok.com/
-error: script "start-web" exited with code 1
