@@ -14,6 +14,9 @@ export default function AboutScreen() {
         <Text style={styles.sectionTitle}>Packages</Text>
         <Text style={styles.sectionText}>No packages published</Text>
         <Text style={styles.mutedText}>Publish your first package to share reusable modules and UI components.</Text>
+
+        <Text style={styles.sectionTitle}>Web URL</Text>
+        <Text style={styles.sectionText}>https://jagetheswaren.github.io/Online-Event-AI/</Text>
       </ScrollView>
     </ScreenFrame>
   );
