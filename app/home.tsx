@@ -127,6 +127,14 @@ export default function HomeScreen() {
       onPress: () => router.push('/my-events'),
       roles: ['customer', 'planner', 'vendor'],
     },
+    {
+      id: 'about',
+      title: 'About App',
+      icon: Star,
+      color: '#A855F7',
+      onPress: () => router.push('/about'),
+      roles: ['customer', 'planner', 'vendor'],
+    },
   ].filter((action) => action.roles.includes(user?.role || 'customer'));
 
   return (
