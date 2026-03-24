@@ -4,9 +4,9 @@ The EventAI platform is designed to simplify the entire event planning process b
 ## GitHub Pages Deployment
 This repository automatically deploys the Expo web build on every push to `main` via GitHub Actions.
 
-- Build command: `npx expo build:web --non-interactive`
+- Build command: `npx expo export --platform web --output-dir web-build`
 - Publish folder: `web-build`
-- Access at: `https://<username>.github.io/Online-Event-AI/`
+- Live site: `https://jagetheswaren.github.io/Online-Event-AI/`
 
-> After deployment, open `/about` to check the new About page you added.
+If the live site is not showing yet, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
 
