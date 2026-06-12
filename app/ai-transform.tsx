@@ -4,9 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Image } from 'expo-image';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import * as ImagePicker from 'expo-image-picker';
+let ImagePickerModule: any;
 import * as FileSystem from 'expo-file-system/legacy';
-import * as MediaLibrary from 'expo-media-library';
+let MediaLibraryModule;
 import { ChevronLeft, Upload, Sparkles, Download, RotateCw } from 'lucide-react-native';
 import { EventCategory } from '@/types';
 import { useEvents } from '@/providers/EventProvider';
@@ -79,8 +79,11 @@ export default function AITransformScreen() {
   ];
 
   const pickImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['Images'],
+    if (!ImagePickerModule) {
+      ImagePickerModule = await import('expo-image-picker');
+    }
+    const result = await ImagePickerModule.launchImageLibraryAsync({
+      mediaTypes: ['images'],
       allowsEditing: true,
       quality: 1,
     });
@@ -176,7 +179,10 @@ export default function AITransformScreen() {
         return;
       }
 
-      const permission = await MediaLibrary.requestPermissionsAsync();
+      if (!MediaLibraryModule) {
+        MediaLibraryModule = await import('expo-media-library');
+      }
+      const permission = await MediaLibraryModule.requestPermissionsAsync();
       if (!permission.granted) {
         Alert.alert('Permission Required', 'Please allow photo library access to save images.');
         return;
@@ -207,12 +213,12 @@ export default function AITransformScreen() {
         localUri = downloadResult.uri;
       }
 
-      const asset = await MediaLibrary.createAssetAsync(localUri);
-      const album = await MediaLibrary.getAlbumAsync('EventAI');
+      const asset = await MediaLibraryModule.createAssetAsync(localUri);
+      const album = await MediaLibraryModule.getAlbumAsync('EventAI');
       if (album) {
-        await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
+        await MediaLibraryModule.addAssetsToAlbumAsync([asset], album, false);
       } else {
-        await MediaLibrary.createAlbumAsync('EventAI', asset, false);
+        await MediaLibraryModule.createAlbumAsync('EventAI', asset, false);
       }
 
       Alert.alert('Saved', 'Image saved to gallery (EventAI album).');
