@@ -2,7 +2,7 @@
  * Test Cases for AI Event Planner System
  * Run with: npm test or bun test
  */
-
+import { describe, it, expect } from 'vitest';
 import {
   validateEmail,
   validatePhone,
@@ -249,13 +249,4 @@ describe('Integration Tests', () => {
 });
 
 // Export for running tests
-export {
-  validateEmail,
-  validatePhone,
-  validateDate,
-  validateGuestCount,
-  validateAmount,
-  validateName,
-  sanitizeInput,
-  validateBookingForm,
-};
+
