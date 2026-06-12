@@ -22,6 +22,22 @@ const resolveZodV4 = (context, moduleName, platform) => {
     };
   }
 
+  // Provide a lightweight web shim for expo-linear-gradient to avoid native-module errors on web
+  if ((moduleName === 'expo-linear-gradient' || moduleName.startsWith('expo-linear-gradient/')) && platform === 'web') {
+    return {
+      filePath: path.join(__dirname, 'web-shims', 'expo-linear-gradient.js'),
+      type: 'sourceFile',
+    };
+  }
+
+  // Provide a simple web fallback for expo-image to map to react-native Image on web
+  if ((moduleName === 'expo-image' || moduleName.startsWith('expo-image/')) && platform === 'web') {
+    return {
+      filePath: path.join(__dirname, 'web-shims', 'expo-image.js'),
+      type: 'sourceFile',
+    };
+  }
+
   if (originalResolveRequest) {
     return originalResolveRequest(context, moduleName, platform);
   }
