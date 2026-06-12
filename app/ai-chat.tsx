@@ -5,7 +5,7 @@ import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronLeft, Send, Sparkles, ImagePlus, History, Trash2, Plus, X } from 'lucide-react-native';
 import { useRorkAgent } from '@rork-ai/toolkit-sdk';
-import * as ImagePicker from 'expo-image-picker';
+let ImagePickerModule: any;
 import { useChatHistory, ChatMessage } from '@/providers/ChatHistoryProvider';
 import { AI_PLAYBOOKS } from '@/constants/aiPlaybooks';
 import { buildPlaybookPrompt } from '@/utils/aiPromptBuilder';
@@ -295,8 +295,11 @@ export default function AIChatScreen() {
   };
 
   const pickImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['Images'],
+    if (!ImagePickerModule) {
+      ImagePickerModule = await import('expo-image-picker');
+    }
+    const result = await ImagePickerModule.launchImageLibraryAsync({
+      mediaTypes: ['images'],
       allowsEditing: true,
       quality: 1,
     });

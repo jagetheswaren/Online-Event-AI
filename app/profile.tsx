@@ -20,7 +20,7 @@ import {
   User,
 } from 'lucide-react-native';
 import { useUser } from '@/providers/UserProvider';
-import * as ImagePicker from 'expo-image-picker';
+let ImagePickerModule: any;
 import TopMenuBar from '@/components/TopMenuBar';
 import ScreenFrame from '@/components/ScreenFrame';
 import { theme } from '@/constants/theme';
@@ -153,8 +153,11 @@ export default function ProfileScreen() {
   };
 
   const pickImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['Images'],
+    if (!ImagePickerModule) {
+      ImagePickerModule = await import('expo-image-picker');
+    }
+    const result = await ImagePickerModule.launchImageLibraryAsync({
+      mediaTypes: ['images'],
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,

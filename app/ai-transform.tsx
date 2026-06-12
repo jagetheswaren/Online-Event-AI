@@ -4,9 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Image } from 'expo-image';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system/legacy';
-import * as MediaLibrary from 'expo-media-library';
+let ImagePickerModule: any;
+let FileSystemModule: any;
+let MediaLibraryModule;
 import { ChevronLeft, Upload, Sparkles, Download, RotateCw } from 'lucide-react-native';
 import { EventCategory } from '@/types';
 import { useEvents } from '@/providers/EventProvider';
@@ -79,8 +79,11 @@ export default function AITransformScreen() {
   ];
 
   const pickImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['Images'],
+    if (!ImagePickerModule) {
+      ImagePickerModule = await import('expo-image-picker');
+    }
+    const result = await ImagePickerModule.launchImageLibraryAsync({
+      mediaTypes: ['images'],
       allowsEditing: true,
       quality: 1,
     });
@@ -176,7 +179,10 @@ export default function AITransformScreen() {
         return;
       }
 
-      const permission = await MediaLibrary.requestPermissionsAsync();
+      if (!MediaLibraryModule) {
+        MediaLibraryModule = await import('expo-media-library');
+      }
+      const permission = await MediaLibraryModule.requestPermissionsAsync();
       if (!permission.granted) {
         Alert.alert('Permission Required', 'Please allow photo library access to save images.');
         return;
@@ -197,22 +203,29 @@ export default function AITransformScreen() {
             ? 'webp'
             : 'jpg';
 
-        localUri = `${FileSystem.cacheDirectory}eventai-transform-${Date.now()}.${extension}`;
-        await FileSystem.writeAsStringAsync(localUri, base64Data, {
-          encoding: FileSystem.EncodingType.Base64,
+        if (!FileSystemModule) {
+          FileSystemModule = await import('expo-file-system/legacy');
+        }
+
+        localUri = `${FileSystemModule.cacheDirectory}eventai-transform-${Date.now()}.${extension}`;
+        await FileSystemModule.writeAsStringAsync(localUri, base64Data, {
+          encoding: FileSystemModule.EncodingType.Base64,
         });
       } else if (transformedImage.startsWith('http')) {
-        const fileUri = `${FileSystem.cacheDirectory}eventai-transform-${Date.now()}.jpg`;
-        const downloadResult = await FileSystem.downloadAsync(transformedImage, fileUri);
+        if (!FileSystemModule) {
+          FileSystemModule = await import('expo-file-system/legacy');
+        }
+        const fileUri = `${FileSystemModule.cacheDirectory}eventai-transform-${Date.now()}.jpg`;
+        const downloadResult = await FileSystemModule.downloadAsync(transformedImage, fileUri);
         localUri = downloadResult.uri;
       }
 
-      const asset = await MediaLibrary.createAssetAsync(localUri);
-      const album = await MediaLibrary.getAlbumAsync('EventAI');
+      const asset = await MediaLibraryModule.createAssetAsync(localUri);
+      const album = await MediaLibraryModule.getAlbumAsync('EventAI');
       if (album) {
-        await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
+        await MediaLibraryModule.addAssetsToAlbumAsync([asset], album, false);
       } else {
-        await MediaLibrary.createAlbumAsync('EventAI', asset, false);
+        await MediaLibraryModule.createAlbumAsync('EventAI', asset, false);
       }
 
       Alert.alert('Saved', 'Image saved to gallery (EventAI album).');
