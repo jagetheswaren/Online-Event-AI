@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Image } from 'expo-image';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 let ImagePickerModule: any;
-import * as FileSystem from 'expo-file-system/legacy';
+let FileSystemModule: any;
 let MediaLibraryModule;
 import { ChevronLeft, Upload, Sparkles, Download, RotateCw } from 'lucide-react-native';
 import { EventCategory } from '@/types';
@@ -203,13 +203,20 @@ export default function AITransformScreen() {
             ? 'webp'
             : 'jpg';
 
-        localUri = `${FileSystem.cacheDirectory}eventai-transform-${Date.now()}.${extension}`;
-        await FileSystem.writeAsStringAsync(localUri, base64Data, {
-          encoding: FileSystem.EncodingType.Base64,
+        if (!FileSystemModule) {
+          FileSystemModule = await import('expo-file-system/legacy');
+        }
+
+        localUri = `${FileSystemModule.cacheDirectory}eventai-transform-${Date.now()}.${extension}`;
+        await FileSystemModule.writeAsStringAsync(localUri, base64Data, {
+          encoding: FileSystemModule.EncodingType.Base64,
         });
       } else if (transformedImage.startsWith('http')) {
-        const fileUri = `${FileSystem.cacheDirectory}eventai-transform-${Date.now()}.jpg`;
-        const downloadResult = await FileSystem.downloadAsync(transformedImage, fileUri);
+        if (!FileSystemModule) {
+          FileSystemModule = await import('expo-file-system/legacy');
+        }
+        const fileUri = `${FileSystemModule.cacheDirectory}eventai-transform-${Date.now()}.jpg`;
+        const downloadResult = await FileSystemModule.downloadAsync(transformedImage, fileUri);
         localUri = downloadResult.uri;
       }
 
