@@ -23,3 +23,33 @@ Summary of changes for Expo/Metro and web fixes
   - `package.json` (dependencies updated, `node_modules` reinstalled)
 
 If you want, I can open a branch, commit these changes and create a PR with this summary. Or I can start replacing the static `expo-image-picker` imports with lazy imports where appropriate. Which should I do next?
+
+--
+
+Additional updates included in this PR (branch `fix/web-lazy-native-imports`):
+
+- Dependency upgrades and verification:
+  - Ran `npx expo install --check` and installed recommended SDK 56 compatible versions for packages including `react`, `react-dom`, `react-native`, `expo-image-picker`, and related Expo packages. Installs were performed using `npm install --legacy-peer-deps` to avoid bun on Windows.
+  - Verified `expo-router` and `@expo/router-server` align to Expo SDK 56 compatible versions.
+
+- Web shim for `expo-media-library`:
+  - Added `web-shims/expo-media-library.js` (a lightweight no-op fallback) and updated `metro.config.js` to resolve `expo-media-library` to the shim when bundling for web. This prevents runtime errors like "Cannot find native module 'ExpoMediaLibraryNext'" during web builds.
+
+- Test fixes:
+  - Fixed unit tests in `__tests__/validation.test.ts` by importing Vitest globals (`describe`, `it`, `expect`) and removing an accidental export. All tests now pass locally (26 passed).
+
+- Commits in this PR:
+  - `chore(web): lazy-load native-only Expo modules for web compatibility` — lazy-loaded `expo-image-picker` and ensured `expo-media-library` is dynamically imported.
+  - `chore: add web shim for expo-media-library and resolve in metro.config.js` — added shim and resolver mapping.
+  - `test: fix vitest globals and remove accidental export in validation tests` — test fixes.
+
+Validation performed locally:
+1. Cleaned `node_modules` and `package-lock.json`, installed dependencies with `npm install --legacy-peer-deps`.
+2. Ran `npx expo install --check` and applied recommended package updates.
+3. Started the Expo web dev server with `npx expo start --web --clear` to validate bundling; resolved the `zod/v4` and `expo-media-library` errors by the resolver and shim.
+4. Ran `npm test` (Vitest) — all tests passed locally.
+
+Next actions I can take now (pick one):
+- Run the app flows in the browser and report runtime behavior for AI Chat, Profile avatar upload, and AI Transform save/download.
+- Update the GitHub PR description/body with this expanded summary. (I can paste the updated PR body here for you to copy, or I can update the PR directly if you provide a GitHub token with repo write access.)
+- Continue replacing other static native-only imports with lazy imports or shims.
